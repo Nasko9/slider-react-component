@@ -1,3 +1,14 @@
+/* Import font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap");
+
+/* Implement tailwind */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Set font for all elements */
+@layer base {
+  html {
+    font-family: Poppins, serif;
+  }
+}
