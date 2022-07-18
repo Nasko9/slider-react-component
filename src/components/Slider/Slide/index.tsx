@@ -1,8 +1,8 @@
-export default function Slide({ bodyPosition }: any) {
+export default function Slide({ bodyPosition, img, description }: any) {
   return (
-    <div className="self-center">
+    <>
       <img
-        src="https://framed.shindiristudio.com/wp-content/uploads/2016/04/Accordion-4.jpg"
+        src={img}
         alt="slide"
         className="h-[26.25rem] w-[46.875rem] self-center"
       />
@@ -12,9 +12,7 @@ export default function Slide({ bodyPosition }: any) {
           bodyPosition === "left" ? "ml-[40rem]" : "ml-[-8rem]"
         } absolute z-10 mt-[-24rem] w-[14.375rem] bg-[#6772e5]`}
       >
-        <h4 className="p-6 text-lg font-bold text-white">
-          Open spaces and long corridors all throughout
-        </h4>
+        <h4 className="p-6 text-lg font-bold text-white">{description}</h4>
       </div>
       <div
         className={`${
@@ -29,6 +27,6 @@ export default function Slide({ bodyPosition }: any) {
         <div className="h-2 w-2 rounded-full bg-[#9299eb]"></div>
         <div className="h-2 w-2 rounded-full bg-[#9299eb]"></div>
       </div>
-    </div>
+    </>
   );
 }

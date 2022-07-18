@@ -1,31 +1,14 @@
-// const firstSliderData = [
-//   {
-//     image:
-//       "https://framed.shindiristudio.com/wp-content/uploads/2016/04/Accordion-4.jpg",
-//     description: "Open spaces and long corridors all throught",
-//   },
-//   {
-//     image:
-//       "https://framed.shindiristudio.com/wp-content/uploads/2016/04/Accordion-3.jpg",
-//     description: "Spacious and clean working enviroment",
-//   },
-//   {
-//     image:
-//       "https://framed.shindiristudio.com/wp-content/uploads/2016/04/Accordion-2.jpg",
-//     description: "Relaxin chill zone",
-//   },
-//   {
-//     image:
-//       "https://framed.shindiristudio.com/wp-content/uploads/2016/04/Accordion-5.jpg",
-//     description: "Fully stocked company library",
-//   },
-// ];
-
 // Components
 import Header from "./Header";
 import Slide from "./Slide";
 
-export default function Slider({ headerPosition, tag, title, subTitle }: any) {
+export default function Slider({
+  headerPosition,
+  tag,
+  title,
+  subTitle,
+  slider,
+}: any) {
   return (
     <>
       {headerPosition === "top" && (
@@ -36,11 +19,20 @@ export default function Slider({ headerPosition, tag, title, subTitle }: any) {
             title={title}
             subTitle={subTitle}
           />
-          <Slide bodyPosition="" />
+
+          {slider.map((data: any) => (
+            <div className="self-center" key={slider.key}>
+              <Slide
+                bodyPosition=""
+                img={data.image}
+                description={data.description}
+              />
+            </div>
+          ))}
         </div>
       )}
 
-      {headerPosition === "bottom" && (
+      {/* {headerPosition === "bottom" && (
         <div className="flex flex-col-reverse gap-y-10">
           <Header
             headerPosition="col"
@@ -76,7 +68,7 @@ export default function Slider({ headerPosition, tag, title, subTitle }: any) {
           />
           <div className="h-1 w-[220px] self-center bg-[#6772e5]"></div>
         </div>
-      )}
+      )} */}
     </>
   );
 }
