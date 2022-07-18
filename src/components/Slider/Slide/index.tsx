@@ -1,4 +1,4 @@
-export default function Body({ bodyPosition }: any) {
+export default function Slide({ bodyPosition }: any) {
   return (
     <div className="self-center">
       <img
