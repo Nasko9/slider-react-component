@@ -1,6 +1,13 @@
-export default function Slide({ bodyPosition, img, description }: any) {
+// Type
+interface ISlide {
+  bodyPosition: string;
+  img: string;
+  description: string;
+}
+
+export default function Slide({ bodyPosition, img, description }: ISlide) {
   return (
-    <>
+    <div className="w-[900px] shrink-0 snap-center self-center">
       <img
         src={img}
         alt="slide"
@@ -21,12 +28,6 @@ export default function Slide({ bodyPosition, img, description }: any) {
       >
         01/04
       </div>
-      <div className="mt-5 flex w-[46.875rem] justify-center gap-12 self-center">
-        <div className="h-2 w-2 rounded-full bg-[#6772e5]"></div>
-        <div className="h-2 w-2 rounded-full bg-[#9299eb]"></div>
-        <div className="h-2 w-2 rounded-full bg-[#9299eb]"></div>
-        <div className="h-2 w-2 rounded-full bg-[#9299eb]"></div>
-      </div>
-    </>
+    </div>
   );
 }

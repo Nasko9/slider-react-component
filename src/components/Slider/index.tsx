@@ -2,73 +2,58 @@
 import Header from "./Header";
 import Slide from "./Slide";
 
+// Hook
+import useSlider from "./useSlider";
+
+// Type
+interface ISlider {
+  headerPosition: string;
+  tag: string;
+  title: string;
+  subTitle: string;
+  slider: Object[];
+}
+
 export default function Slider({
   headerPosition,
   tag,
   title,
   subTitle,
   slider,
-}: any) {
+}: ISlider) {
+  const { ref, innerRef } = useSlider();
+
   return (
     <>
       {headerPosition === "top" && (
         <div className="flex flex-col">
           <Header
-            headerPosition="col"
+            headerWidth="wider"
             tag={tag}
             title={title}
             subTitle={subTitle}
           />
 
-          {slider.map((data: any) => (
-            <div className="self-center" key={slider.key}>
-              <Slide
-                bodyPosition=""
-                img={data.image}
-                description={data.description}
-              />
+          <div
+            className="hide-scrollbar relative w-[900px] max-w-full touch-pan-y overflow-auto"
+            ref={ref}
+          >
+            <div
+              className="swiper-list pointer-events-none relative top-0 left-0 flex min-w-full flex-row"
+              ref={innerRef}
+            >
+              {slider.map((data: any) => (
+                <Slide
+                  key={data.id}
+                  bodyPosition=""
+                  img={data.image}
+                  description={data.description}
+                />
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       )}
-
-      {/* {headerPosition === "bottom" && (
-        <div className="flex flex-col-reverse gap-y-10">
-          <Header
-            headerPosition="col"
-            tag={tag}
-            title={title}
-            subTitle={subTitle}
-          />
-          <Slide bodyPosition="" />
-        </div>
-      )}
-
-      {headerPosition === "left" && (
-        <div className="flex">
-          <div className="h-1 w-[220px] self-center bg-[#6772e5]"></div>
-          <Header
-            headerPosition=""
-            tag={tag}
-            title={title}
-            subTitle={subTitle}
-          />
-          <Slide bodyPosition="left" />
-        </div>
-      )}
-
-      {headerPosition === "right" && (
-        <div className="flex">
-          <Slide bodyPosition="" />
-          <Header
-            headerPosition=""
-            tag={tag}
-            title={title}
-            subTitle={subTitle}
-          />
-          <div className="h-1 w-[220px] self-center bg-[#6772e5]"></div>
-        </div>
-      )} */}
     </>
   );
 }
