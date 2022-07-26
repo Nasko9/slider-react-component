@@ -1,6 +1,7 @@
 export interface ISlide {
   imgUrl: string;
   imgAlt: string;
+  description: string;
 }
 
 export default function Slide({ imgUrl, imgAlt }: ISlide) {

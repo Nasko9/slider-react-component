@@ -2,12 +2,14 @@
 import SliderSection from "./components/SliderSection";
 
 // Data
-import { sliderData } from "./data/sldierData";
+import { sliderSectionData } from "./data/sliderSectionData";
 
 function App() {
   return (
-    <div className="container py-20">
-      <SliderSection data={sliderData} layout={"right"} />
+    <div className="container flex flex-col gap-20 py-20">
+      {sliderSectionData.map((data, index) => (
+        <SliderSection key={index} {...data} />
+      ))}
     </div>
   );
 }
